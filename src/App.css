@@ -236,6 +236,13 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  .app {
+    padding: 20px 10px;
+  }
+  .content {
+    width: 100%;
+    padding: 20px;
+  }
   .filters {
     flex-direction: column;
     align-items: stretch;
@@ -250,9 +257,12 @@ button:hover {
 }
 
 @media (max-width: 576px) {
+  .app {
+    padding: 10px 5px;
+  }
   .content {
     padding: 15px;
-    width: 100%;
+    border-radius: 10px;
   }
   h1 {
     font-size: 22px;

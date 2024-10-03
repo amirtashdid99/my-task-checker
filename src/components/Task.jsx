@@ -83,10 +83,17 @@ const Task = ({
           className="progress-bar"
           style={{
             width: `${progress}%`,
-            backgroundColor: task.completed ? "green" : "blue",
+            backgroundColor: progress > 48 ? "green" : "red", // Change color based on progress
           }}
         ></div>
-        <span className="progress-text">{progress}%</span>
+        <span
+          className="progress-text"
+          style={{
+            color: progress > 48 ? "white" : "black", // Change text color based on progress
+          }}
+        >
+          {progress}%
+        </span>
       </div>
       <input
         type="range"

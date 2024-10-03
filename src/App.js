@@ -14,9 +14,14 @@ const App = () => {
   const [customOrder, setCustomOrder] = useState([]);
 
   useEffect(() => {
-    // Load tasks from tasks.json
-    fetch("tasks.json")
-      .then((response) => response.json())
+    // Use process.env.PUBLIC_URL to get the correct base path
+    fetch(`${process.env.PUBLIC_URL}/tasks.json`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         setTasks(data);
         setCustomOrder(data.map((task) => task.id));
@@ -98,6 +103,13 @@ const App = () => {
 
   const filteredAndSortedTasks = sortTasks(filteredTasks);
 
+  const handleModalClose = (e) => {
+    // Check if the click is on the overlay itself, not its children
+    if (e.target.className === "modal-overlay") {
+      setIsFormOpen(false);
+    }
+  };
+
   return (
     <div className="app">
       <div className="content">
@@ -167,7 +179,7 @@ const App = () => {
         />{" "}
       </div>{" "}
       {isFormOpen && (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={handleModalClose}>
           <div className="modal">
             <button className="close-btn" onClick={() => setIsFormOpen(false)}>
               {" "}
