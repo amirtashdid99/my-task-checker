@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Math Homework",
+    "progress": 50,
+    "completed": false,
+    "categories": ["Math", "Homework"]
+  },
+  {
+    "id": 2,
+    "title": "Science Project",
+    "progress": 100,
+    "completed": true,
+    "categories": ["Science", "Project"]
+  }
+]
