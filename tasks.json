@@ -12,5 +12,26 @@
     "progress": 100,
     "completed": true,
     "categories": ["Science", "Project"]
+  },
+  {
+    "id": 3,
+    "title": "History Essay",
+    "progress": 20,
+    "completed": false,
+    "categories": ["History", "Essay"]
+  },
+  {
+    "id": 4,
+    "title": "Art Assignment",
+    "progress": 75,
+    "completed": false,
+    "categories": ["Art", "Assignment"]
+  },
+  {
+    "id": 5,
+    "title": "Biology Lab",
+    "progress": 90,
+    "completed": false,
+    "categories": ["Biology", "Lab"]
   }
 ]
