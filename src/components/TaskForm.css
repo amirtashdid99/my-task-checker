@@ -1,0 +1,81 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-form h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.task-form input[type="text"],
+.task-form input[type="number"] {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.task-form label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #34495e;
+}
+
+.task-form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.task-form button[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.task-form button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.category-input {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.category-input input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.category-labels {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.category-label {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.category-label button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+}

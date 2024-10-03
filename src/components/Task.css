@@ -1,0 +1,214 @@
+.task {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.task-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.task-enter-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.task-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.task-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.progress-bar-background {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+  position: relative;
+}
+
+.progress-bar {
+  height: 20px;
+}
+
+.progress-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.category {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.category-labels {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.category-label {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 25px 5px 10px;
+  /* Right padding for icon */
+  border-radius: 15px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  position: relative;
+  max-width: 100%;
+  /* Ensure it doesn't exceed container width */
+}
+
+.category-label-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 20px;
+  /* Space for the remove icon */
+}
+
+.remove-category {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.remove-category:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.category-section {
+  margin-bottom: 15px;
+}
+
+.category-input {
+  display: flex;
+  align-items: center;
+}
+
+.category-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.category-input input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.category-input button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.category-input button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .task {
+    padding: 15px;
+  }
+  .category-input {
+    flex-direction: column;
+  }
+  .category-input input {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .category-input button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .category-label {
+    font-size: 12px;
+  }
+  .remove-category {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-header h3 {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.drag-handle {
+  cursor: move;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: var(--light-gray);
+  padding: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.drag-handle:hover {
+  color: var(--text-color);
+}

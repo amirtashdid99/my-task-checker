@@ -1,0 +1,26 @@
+.task-list {
+  width: 100%;
+}
+
+.task-item {
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.task-item.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.reorder-hint {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .task-list {
+    align-items: stretch;
+  }
+}

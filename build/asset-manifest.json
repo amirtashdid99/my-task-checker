@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/amirtashdid99/task-checker/static/css/main.5c81c108.css",
+    "main.js": "/amirtashdid99/task-checker/static/js/main.41fb8291.js",
+    "static/js/453.e099950d.chunk.js": "/amirtashdid99/task-checker/static/js/453.e099950d.chunk.js",
+    "index.html": "/amirtashdid99/task-checker/index.html",
+    "main.5c81c108.css.map": "/amirtashdid99/task-checker/static/css/main.5c81c108.css.map",
+    "main.41fb8291.js.map": "/amirtashdid99/task-checker/static/js/main.41fb8291.js.map",
+    "453.e099950d.chunk.js.map": "/amirtashdid99/task-checker/static/js/453.e099950d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c81c108.css",
+    "static/js/main.41fb8291.js"
+  ]
+}
