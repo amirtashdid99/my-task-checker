@@ -87,41 +87,32 @@ h1 {
   text-transform: uppercase;
   font-size: 14px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #4a4a4a;
+  /* Default color */
+  color: white;
 }
 
 .buttons button:hover {
+  background-color: #5a5a5a;
+  /* Slightly lighter on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.buttons button.all {
-  background-color: var(--light-gray);
-  color: var(--dark-gray);
+.buttons button.active {
+  color: white;
 }
 
 .buttons button.all.active {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-
-.buttons button.completed {
-  background-color: var(--light-gray);
-  color: var(--dark-gray);
+  background-color: #3498db;
 }
 
 .buttons button.completed.active {
-  background-color: var(--secondary-color);
-  color: var(--white);
-}
-
-.buttons button.incomplete {
-  background-color: var(--light-gray);
-  color: var(--dark-gray);
+  background-color: #2ecc71;
 }
 
 .buttons button.incomplete.active {
-  background-color: var(--danger-color);
-  color: var(--white);
+  background-color: #e74c3c;
 }
 
 button {

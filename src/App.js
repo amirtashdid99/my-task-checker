@@ -130,19 +130,21 @@ const App = () => {
           <div className="buttons">
             <button
               onClick={() => setFilter("all")}
-              className={filter === "all" ? "active" : ""}
+              className={`all ${filter === "all" ? "active" : ""}`}
             >
               All{" "}
             </button>{" "}
             <button
               onClick={() => setFilter("completed")}
-              className={filter === "completed" ? "active" : ""}
+              className={`completed ${filter === "completed" ? "active" : ""}`}
             >
               Completed{" "}
             </button>{" "}
             <button
               onClick={() => setFilter("incomplete")}
-              className={filter === "incomplete" ? "active" : ""}
+              className={`incomplete ${
+                filter === "incomplete" ? "active" : ""
+              }`}
             >
               Incomplete{" "}
             </button>{" "}

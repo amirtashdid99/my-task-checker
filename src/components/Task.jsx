@@ -41,6 +41,14 @@ const Task = ({
     onUpdateTask(task.id, { ...task, categories: updatedCategories });
   };
 
+  const getProgressBarColor = (progress) => {
+    if (progress <= 25) return "#FF4136"; // Beautiful red
+    if (progress <= 50) return "#FF851B"; // Harmonic orange
+    if (progress <= 75) return "#FFDC00"; // Yellow
+    if (progress < 100) return "#32CD32"; // Lime green
+    return "#209e30"; // Dark green for 100%
+  };
+
   return (
     <div className="task">
       <div className="task-header">
@@ -83,13 +91,13 @@ const Task = ({
           className="progress-bar"
           style={{
             width: `${progress}%`,
-            backgroundColor: progress > 48 ? "green" : "red", // Change color based on progress
+            backgroundColor: getProgressBarColor(progress),
           }}
         ></div>
         <span
           className="progress-text"
           style={{
-            color: progress > 48 ? "white" : "black", // Change text color based on progress
+            color: progress > 50 ? "white" : "black", // Adjust text color for better visibility
           }}
         >
           {progress}%
