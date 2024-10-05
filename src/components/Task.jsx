@@ -11,15 +11,23 @@ const Task = ({
   const [progress, setProgress] = useState(task.progress || 0);
   const [newCategory, setNewCategory] = useState("");
   const [categories, setCategories] = useState(task.categories || []);
+  const [isDragging, setIsDragging] = useState(false);
+  const [localCompleted, setLocalCompleted] = useState(task.completed);
 
   useEffect(() => {
     setCategories(task.categories || []);
-  }, [task.categories]);
+    setProgress(task.progress || 0);
+    setLocalCompleted(task.completed);
+  }, [task.categories, task.progress, task.completed]);
 
   const handleProgressChange = (e) => {
     const newProgress = parseInt(e.target.value, 10);
     setProgress(newProgress);
-    onUpdateProgress(task.id, newProgress);
+    setLocalCompleted(newProgress === 100);
+  };
+
+  const handleProgressChangeEnd = () => {
+    onUpdateProgress(task.id, progress);
   };
 
   const handleAddCategory = (e) => {
@@ -28,7 +36,7 @@ const Task = ({
       const updatedCategories = [...categories, newCategory];
       setCategories(updatedCategories);
       onUpdateTask(task.id, { ...task, categories: updatedCategories });
-      onAddCategory(newCategory); // Add this line to update the dropdown
+      onAddCategory(newCategory);
       setNewCategory("");
     }
   };
@@ -50,7 +58,7 @@ const Task = ({
   };
 
   return (
-    <div className="task">
+    <div className={`task ${isDragging ? "dragging" : ""}`}>
       <div className="task-header">
         <h3>{task.title}</h3>
         <button
@@ -109,8 +117,18 @@ const Task = ({
         max="100"
         value={progress}
         onChange={handleProgressChange}
+        onMouseDown={() => setIsDragging(true)}
+        onMouseUp={() => {
+          setIsDragging(false);
+          handleProgressChangeEnd();
+        }}
+        onTouchStart={() => setIsDragging(true)}
+        onTouchEnd={() => {
+          setIsDragging(false);
+          handleProgressChangeEnd();
+        }}
       />
-      <p>{task.completed ? "Completed" : "Incomplete"}</p>
+      <p>{localCompleted ? "Completed" : "Incomplete"}</p>
     </div>
   );
 };

@@ -4,7 +4,12 @@
 
 .task-item {
   margin-bottom: 10px;
-  transition: transform 0.2s ease;
+  transition: all 0.5s ease;
+}
+
+.task-item.animating {
+  transform: scale(0.9);
+  opacity: 0.5;
 }
 
 .task-item.dragging {

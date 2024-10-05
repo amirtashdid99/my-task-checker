@@ -11,10 +11,25 @@ const TaskList = ({
 }) => {
   const [localTasks, setLocalTasks] = useState(tasks);
   const [draggedIndex, setDraggedIndex] = useState(null);
+  const [animatingTaskId, setAnimatingTaskId] = useState(null);
 
   useEffect(() => {
     setLocalTasks(tasks);
   }, [tasks]);
+
+  const handleUpdateProgress = (taskId, newProgress) => {
+    const updatedTasks = localTasks.map((task) =>
+      task.id === taskId
+        ? { ...task, progress: newProgress, completed: newProgress === 100 }
+        : task
+    );
+    setLocalTasks(updatedTasks);
+    setAnimatingTaskId(taskId);
+    setTimeout(() => {
+      setAnimatingTaskId(null);
+      onUpdateProgress(taskId, newProgress);
+    }, 500); // Adjust this timing to match your CSS animation duration
+  };
 
   const handleDragStart = (e, index) => {
     setDraggedIndex(index);
@@ -48,11 +63,13 @@ const TaskList = ({
         <div
           key={task.id}
           onDragOver={(e) => handleDragOver(e, index)}
-          className={`task-item ${draggedIndex === index ? "dragging" : ""}`}
+          className={`task-item ${draggedIndex === index ? "dragging" : ""} ${
+            animatingTaskId === task.id ? "animating" : ""
+          }`}
         >
           <Task
             task={task}
-            onUpdateProgress={onUpdateProgress}
+            onUpdateProgress={handleUpdateProgress}
             onUpdateTask={onUpdateTask}
             onAddCategory={onAddCategory}
             dragHandleProps={{

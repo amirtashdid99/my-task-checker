@@ -41,13 +41,15 @@ const App = () => {
   };
 
   const handleUpdateProgress = (taskId, newProgress) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === taskId
-          ? { ...task, progress: newProgress, completed: newProgress === 100 }
-          : task
-      )
-    );
+    setTimeout(() => {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId
+            ? { ...task, progress: newProgress, completed: newProgress === 100 }
+            : task
+        )
+      );
+    }, 500); // This should match the animation duration in TaskList.jsx
   };
 
   const handleAddTask = (newTask) => {
