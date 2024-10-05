@@ -32,7 +32,7 @@
   background-color: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
-  margin: 10px 0;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -211,4 +211,68 @@ input[type="range"] {
 
 .drag-handle:hover {
   color: var(--text-color);
+}
+
+.progress-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-control input[type="range"] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.progress-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  /* Increased from 60px to accommodate right padding */
+  position: relative;
+}
+
+.progress-input {
+  width: 40px;
+  padding: 5px 16px 5px 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.progress-input::-webkit-inner-spin-button,
+.progress-input::-webkit-outer-spin-button {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: auto;
+  margin: 0;
+}
+
+/* Hide default arrows for Firefox */
+
+.progress-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom styles for Webkit browsers (Chrome, Safari) */
+
+.progress-input::-webkit-inner-spin-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-percent {
+  margin-left: 3px;
+  margin-right: 5px;
+  /* Added right margin */
+  color: #666;
+  pointer-events: none;
 }

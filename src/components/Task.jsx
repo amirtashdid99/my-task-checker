@@ -13,17 +13,54 @@ const Task = ({
   const [categories, setCategories] = useState(task.categories || []);
   const [isDragging, setIsDragging] = useState(false);
   const [localCompleted, setLocalCompleted] = useState(task.completed);
+  const [inputProgress, setInputProgress] = useState(
+    task.progress?.toString() || "0"
+  );
 
   useEffect(() => {
     setCategories(task.categories || []);
     setProgress(task.progress || 0);
+    setInputProgress(task.progress?.toString() || "0");
     setLocalCompleted(task.completed);
   }, [task.categories, task.progress, task.completed]);
 
   const handleProgressChange = (e) => {
     const newProgress = parseInt(e.target.value, 10);
     setProgress(newProgress);
+    setInputProgress(newProgress.toString());
     setLocalCompleted(newProgress === 100);
+  };
+
+  const handleInputProgressChange = (e) => {
+    const value = e.target.value;
+
+    if (value === "") {
+      setInputProgress(value);
+    } else {
+      const numValue = parseInt(value, 10);
+      if (!isNaN(numValue) && numValue >= 0 && numValue <= 100) {
+        setInputProgress(numValue.toString());
+        setProgress(numValue);
+        setLocalCompleted(numValue === 100);
+      }
+    }
+  };
+
+  const handleInputProgressBlur = () => {
+    if (inputProgress === "") {
+      setInputProgress("0");
+      setProgress(0);
+      setLocalCompleted(false);
+    } else {
+      const newProgress = Math.min(
+        100,
+        Math.max(0, parseInt(inputProgress, 10))
+      );
+      setInputProgress(newProgress.toString());
+      setProgress(newProgress);
+      setLocalCompleted(newProgress === 100);
+    }
+    handleProgressChangeEnd();
   };
 
   const handleProgressChangeEnd = () => {
@@ -111,23 +148,29 @@ const Task = ({
           {progress}%
         </span>
       </div>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={progress}
-        onChange={handleProgressChange}
-        onMouseDown={() => setIsDragging(true)}
-        onMouseUp={() => {
-          setIsDragging(false);
-          handleProgressChangeEnd();
-        }}
-        onTouchStart={() => setIsDragging(true)}
-        onTouchEnd={() => {
-          setIsDragging(false);
-          handleProgressChangeEnd();
-        }}
-      />
+      <div className="progress-control">
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={progress}
+          onChange={handleProgressChange}
+          onMouseUp={handleProgressChangeEnd}
+          onTouchEnd={handleProgressChangeEnd}
+        />
+        <div className="progress-input-wrapper">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            value={inputProgress}
+            onChange={handleInputProgressChange}
+            onBlur={handleInputProgressBlur}
+            className="progress-input"
+          />
+          <span className="progress-percent">%</span>
+        </div>
+      </div>
       <p>{localCompleted ? "Completed" : "Incomplete"}</p>
     </div>
   );
