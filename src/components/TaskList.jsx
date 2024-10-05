@@ -8,6 +8,7 @@ const TaskList = ({
   onUpdateTask,
   onAddCategory,
   onReorder,
+  filter,
 }) => {
   const [localTasks, setLocalTasks] = useState(tasks);
   const [draggedIndex, setDraggedIndex] = useState(null);
@@ -17,18 +18,28 @@ const TaskList = ({
     setLocalTasks(tasks);
   }, [tasks]);
 
-  const handleUpdateProgress = (taskId, newProgress) => {
+  const handleUpdateProgress = (taskId, newProgress, newCompleted) => {
+    const taskToUpdate = localTasks.find((task) => task.id === taskId);
+    const categoryChanged =
+      (filter === "completed" && !newCompleted) ||
+      (filter === "incomplete" && newCompleted);
+
+    if (categoryChanged) {
+      setAnimatingTaskId(taskId);
+      setTimeout(() => {
+        setAnimatingTaskId(null);
+        onUpdateProgress(taskId, newProgress, newCompleted);
+      }, 500); // Adjust this timing to match your CSS animation duration
+    } else {
+      onUpdateProgress(taskId, newProgress, newCompleted);
+    }
+
     const updatedTasks = localTasks.map((task) =>
       task.id === taskId
-        ? { ...task, progress: newProgress, completed: newProgress === 100 }
+        ? { ...task, progress: newProgress, completed: newCompleted }
         : task
     );
     setLocalTasks(updatedTasks);
-    setAnimatingTaskId(taskId);
-    setTimeout(() => {
-      setAnimatingTaskId(null);
-      onUpdateProgress(taskId, newProgress);
-    }, 500); // Adjust this timing to match your CSS animation duration
   };
 
   const handleDragStart = (e, index) => {

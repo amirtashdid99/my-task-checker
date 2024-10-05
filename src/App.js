@@ -40,16 +40,14 @@ const App = () => {
     }
   };
 
-  const handleUpdateProgress = (taskId, newProgress) => {
-    setTimeout(() => {
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === taskId
-            ? { ...task, progress: newProgress, completed: newProgress === 100 }
-            : task
-        )
-      );
-    }, 500); // This should match the animation duration in TaskList.jsx
+  const handleUpdateProgress = (taskId, newProgress, newCompleted) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId
+          ? { ...task, progress: newProgress, completed: newCompleted }
+          : task
+      )
+    );
   };
 
   const handleAddTask = (newTask) => {
@@ -180,6 +178,7 @@ const App = () => {
           onUpdateTask={handleUpdateTask}
           onAddCategory={handleAddCategory}
           onReorder={handleReorder}
+          filter={filter} // Make sure this is being passed
         />{" "}
       </div>{" "}
       {isFormOpen && (

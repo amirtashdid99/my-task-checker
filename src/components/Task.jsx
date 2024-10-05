@@ -27,7 +27,7 @@ const Task = ({
   };
 
   const handleProgressChangeEnd = () => {
-    onUpdateProgress(task.id, progress);
+    onUpdateProgress(task.id, progress, localCompleted);
   };
 
   const handleAddCategory = (e) => {

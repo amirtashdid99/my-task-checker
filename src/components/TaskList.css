@@ -1,31 +1,32 @@
 .task-list {
-  width: 100%;
+    width: 100%;
 }
 
 .task-item {
-  margin-bottom: 10px;
-  transition: all 0.5s ease;
+    margin-bottom: 10px;
+    transition: all 0.5s ease-in-out;
 }
 
 .task-item.animating {
-  transform: scale(0.9);
-  opacity: 0.5;
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+    pointer-events: none;
 }
 
 .task-item.dragging {
-  opacity: 0.5;
-  transform: scale(0.98);
+    opacity: 0.5;
+    transform: scale(0.98);
 }
 
 .reorder-hint {
-  font-style: italic;
-  color: #888;
-  margin-bottom: 15px;
-  text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
-  .task-list {
-    align-items: stretch;
-  }
+    .task-list {
+        align-items: stretch;
+    }
 }
