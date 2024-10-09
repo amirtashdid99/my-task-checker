@@ -11,11 +11,11 @@ const Task = ({
   const [progress, setProgress] = useState(task.progress || 0);
   const [newCategory, setNewCategory] = useState("");
   const [categories, setCategories] = useState(task.categories || []);
-  const [isDragging, setIsDragging] = useState(false);
   const [localCompleted, setLocalCompleted] = useState(task.completed);
   const [inputProgress, setInputProgress] = useState(
     task.progress?.toString() || "0"
   );
+  const [isDragging, setIsDragging] = useState(false); // Define isDragging
 
   useEffect(() => {
     setCategories(task.categories || []);

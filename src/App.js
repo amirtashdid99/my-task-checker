@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
+import LoginButton from "./components/LoginButton";
+import LogoutButton from "./components/LogoutButton";
+import Profile from "./components/Profile";
 import "./App.css";
 
 const App = () => {
@@ -113,7 +116,9 @@ const App = () => {
   return (
     <div className="app">
       <div className="content">
-        <h1> Student Tasks </h1>{" "}
+        <h1> Student Tasks </h1> <LoginButton />
+        <LogoutButton />
+        <Profile />
         <div className="top-controls">
           <input
             type="text"
@@ -178,7 +183,7 @@ const App = () => {
           onUpdateTask={handleUpdateTask}
           onAddCategory={handleAddCategory}
           onReorder={handleReorder}
-          filter={filter} // Make sure this is being passed
+          filter={filter}
         />{" "}
       </div>{" "}
       {isFormOpen && (

@@ -19,7 +19,8 @@ const TaskList = ({
   }, [tasks]);
 
   const handleUpdateProgress = (taskId, newProgress, newCompleted) => {
-    const taskToUpdate = localTasks.find((task) => task.id === taskId);
+    // Remove the unused variable
+    // const taskToUpdate = localTasks.find((task) => task.id === taskId);
     const categoryChanged =
       (filter === "completed" && !newCompleted) ||
       (filter === "incomplete" && newCompleted);
