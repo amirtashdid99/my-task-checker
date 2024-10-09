@@ -4,11 +4,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 const LogoutButton = () => {
   const { logout } = useAuth0();
 
+  // Determine the return URL based on the environment
+  const returnToUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://your-app.vercel.app" // Replace with your actual Vercel URL
+      : window.location.origin;
+
   return (
-    <button onClick={() => logout({ returnTo: window.location.origin })}>
-      {" "}
-      Log Out{" "}
-    </button>
+    <button onClick={() => logout({ returnTo: returnToUrl })}>Log Out </button>
   );
 };
 
