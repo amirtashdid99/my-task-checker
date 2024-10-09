@@ -7,7 +7,7 @@ const LogoutButton = () => {
   // Determine the return URL based on the environment
   const returnToUrl =
     process.env.NODE_ENV === "production"
-      ? "https://student-tasks-frontend.vercel.app" // Replace with your actual Vercel URL
+      ? "https://my-task-checker.vercel.app/" // Replace with your actual Vercel URL
       : window.location.origin;
 
   console.log("Return to URL:", returnToUrl);
